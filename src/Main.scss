@@ -1,0 +1,57 @@
+ /* Main component */
+ main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  align-items: flex-start;
+  position: relative;
+  background-color: ghostwhite;
+  position: relative;
+  padding: 8rem 0.5rem 0.5rem;
+
+  .mainhead {
+    position: absolute;
+    left:40%;
+    top: 0.5rem;
+
+    h1 {
+      margin: 0;
+    }
+
+    .sectionctrl {
+      padding: 1rem 1.5rem;
+      background: brown;
+      color:white;
+      border: 1px solid red;
+  
+      &:hover {
+        background: white;
+        color:brown; 
+      }
+    }
+  }
+  
+
+  section {
+    flex: 1 1 auto;
+    border: 1px solid black;
+  }
+
+  aside {
+    flex: 0 1 auto;
+    align-self: flex-end;
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: auto;
+    
+
+    article {
+      background: white;
+      border: 1px solid black;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+/* END Main component */
