@@ -1,0 +1,93 @@
+/* Header component */
+header {
+  background-color: blanchedalmond;
+  // border-bottom: 1px solid black;
+
+  h1 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0.2rem;
+
+    img {
+      width: 3rem;
+      height: auto;
+      margin-left: 2rem;
+    }
+  }
+  
+  nav {
+    background: black;
+    color: white;
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+
+      li {
+        transition: 0.3s;
+
+        a {
+          display: inline-block;
+          text-decoration: none;
+          color: white;
+          text-align: center; 
+          padding: 14px 25px;
+          border-top: 1px solid black;
+            border-bottom: 1px solid black;
+          
+          &:link {}
+          &:visited {}
+          &:hover {
+            text-decoration: underline;
+            background: white;
+            color: black;
+          }
+
+          &:active {
+            text-decoration: underline;
+          }
+        }
+
+      }
+    }
+  }
+
+  form {
+    fieldset {
+      legend {
+      }
+      section {
+        margin: 1rem;
+        display: flex;
+        flex-flow: column nowrap;
+        align-content: flex-end;
+
+        input {
+          border: 1px solid black;
+          padding: 10px; // 15px for mobile
+          
+          // &[type=email]:invalid {
+          //   color: red;
+          // }
+
+          // &[type=email]:not(:placeholder-shown):invalid {
+          //   color: red;
+          // }
+        }
+      }
+      
+      a {
+        margin-right: 3rem;
+      }
+
+      button {
+        padding: 10px;
+      }
+    }
+  }
+}
+/* END Header component */

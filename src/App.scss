@@ -5,63 +5,7 @@
   min-height: 100%;
   text-align: center;
 
-  /* Header component */
-  header {
-    background-color: blanchedalmond;
-    // border-bottom: 1px solid black;
-
-    h1 {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: center;
-      align-items: center;
-      margin: 0.2rem;
-
-      img {
-        width: 3rem;
-        height: auto;
-        margin-left: 2rem;
-      }
-    }
-    
-    nav {
-      background: black;
-      color: white;
-
-      ul {
-        list-style: none;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-evenly;
-
-        li {
-          transition: 0.3s;
-
-          a {
-            display: inline-block;
-            text-decoration: none;
-            color: white;
-            text-align: center; 
-            padding: 14px 25px;
-            
-            &:link {}
-            &:visited {}
-            &:hover {
-              text-decoration: underline;
-              background: white;
-              color: black;
-            }
-
-            &:active {
-              text-decoration: underline;
-            }
-          }
-
-        }
-      }
-    }
-  }
-  /* END Header component */
+  
 
   footer {
     padding: 1rem;
