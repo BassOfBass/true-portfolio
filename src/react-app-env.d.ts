@@ -1,6 +1,6 @@
 /// <reference types="react-scripts" />
 
-interface NewsAPIResponse {
+interface NewsAPIResponseJSON {
   status: string;
   totalResults: number;
   articles: NewsAPIArticle[];

@@ -2,77 +2,66 @@
  main {
   flex: 1 1 auto;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: flex-start;
   position: relative;
   background-color: ghostwhite;
-  position: relative;
-  padding: 8rem 0.5rem 0.5rem;
+  position: relative; 
 
-  .mainhead {
-    position: absolute;
-    left:40%;
-    top: 0.5rem;
+  section {
+    flex: 0 1 auto;
+    border: 1px solid black;
+  }
 
-    h1 {
-      margin: 0;
+  /* News component */
+  .bignews {
+    height: 100vh;
+    overflow-y: auto;
+    flex: 0 1 25%;
+    justify-self: flex-end;
+    margin-left: auto;
+
+    form {
+      display: none;
     }
 
-    .sectionctrl {
-      padding: 1rem 1.5rem;
-      background: brown;
-      color:white;
-      border-radius: 10px;
-      border: 1px solid red;
-  
-      &:hover {
-        background: white;
-        color:brown; 
-      }
-    }
+    ul {
+      list-style: none;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      max-width: 100%;
+      padding-inline-start: 1.5rem;
 
-    /* News component */
-    .bignews {
-      ul {
-        display: flex;
-        flex-flow: column wrap;
-        
-        li {
-          article {
-            a {
-              img {
-                max-width: 100%;
-                height: auto;
-              }
+      li {
+        text-align: start;
+        margin-right: 1.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+
+        .newsarticle {
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: space-evenly;
+          padding: 0.5rem;
+          margin-bottom: 1rem;
+
+          a {
+            img {
+              max-width: 100%;
+              height: auto;
             }
+          }
+
+          .newscontent {
+            background: white;
+            padding: 0.5rem;
           }
         }
       }
     }
-    /* END News component*/
   }
-  
-
-  section {
-    flex: 1 1 auto;
-    border: 1px solid black;
-  }
-
-  aside {
-    flex: 0 1 auto;
-    align-self: flex-end;
-    display: flex;
-    flex-flow: row wrap;
-    margin-left: auto;
-    
-
-    article {
-      background: white;
-      border: 1px solid black;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-    }
-  }
+  /* END News component*/
 }
 /* END Main component */
