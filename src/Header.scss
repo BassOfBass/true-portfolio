@@ -39,8 +39,8 @@ header {
           border-top: 1px solid black;
             border-bottom: 1px solid black;
           
-          &:link {}
-          &:visited {}
+          // &:link {}
+          // &:visited {}
           &:hover {
             text-decoration: underline;
             background: white;
@@ -57,14 +57,20 @@ header {
   }
 
   form {
+    height: 0;
+
+    &.formopen {
+      height: 100%;
+    }
+
     fieldset {
-      legend {
-      }
       section {
         margin: 1rem;
+        max-width: 25%;
         display: flex;
         flex-flow: column nowrap;
         align-content: flex-end;
+        transition: 0.5s;
 
         input {
           border: 1px solid black;
@@ -78,14 +84,30 @@ header {
           //   color: red;
           // }
         }
+
+        &#toggle-password {
+          background: none;
+          border: none;
+          cursor: pointer;
+          /* Media query isn't shown here. */
+          font-size: var(--mobile-font-size); 
+          font-weight: 300;
+          padding: 0;
+          /* Display at the top right of the container */
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
       }
       
       a {
         margin-right: 3rem;
       }
 
-      button {
-        padding: 10px;
+      > button {
+        border-radius: 1rem;
+        border: 1px solid darkgreen;
+        padding: 1rem;
       }
     }
   }

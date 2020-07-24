@@ -3,7 +3,7 @@
   flex: 1 1 auto;
   display: flex;
   flex-flow: row wrap;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: flex-start;
   position: relative;
   background-color: ghostwhite;
@@ -31,6 +31,26 @@
         color:brown; 
       }
     }
+
+    /* News component */
+    .bignews {
+      ul {
+        display: flex;
+        flex-flow: column wrap;
+        
+        li {
+          article {
+            a {
+              img {
+                max-width: 100%;
+                height: auto;
+              }
+            }
+          }
+        }
+      }
+    }
+    /* END News component*/
   }
   
 

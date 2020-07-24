@@ -1,5 +1,6 @@
 import React from 'react';
-import { SECTIONFILLER, ASIDEFILLER } from './storages/Main';
+import { ASIDEFILLER, NEWSAPIKEY } from './storages/Main';
+import { MiscMaster } from './misc/_MiscMaster';
 
 import "./Main.scss";
 
@@ -21,6 +22,7 @@ export function Main() {
         </button>
       </div>
       {sect ? <Calendar /> : <News />}
+      {process.env.NODE_ENV === "development" && <MiscMaster />}
       <aside>
         <h2>Aside</h2>
         {
@@ -49,21 +51,40 @@ function Calendar() {
 }
 
 function News() {
-  const sectionFiller = SECTIONFILLER;
+  const [news, setNews] = React.useState<NewsAPIResponse["articles"] | null>(null);
+
+  React.useEffect(() => {
+    fetchNews();
+
+    async function fetchNews() {
+      const response = await fetch(`http://newsapi.org/v2/top-headlines?country=us&apiKey=${NEWSAPIKEY}`);
+      const json: NewsAPIResponse = await response.json();
+      console.log(json);
+      
+      setNews(json.articles);
+    }
+  }, [setNews]);
 
   return (
-    <section>
-        <h2>Content section</h2>
-        {
-          sectionFiller.map(article => (
-            <article key={article.id}>
-              <h3>{article.heading}</h3>
-              <p>
-                {article.text}
-              </p>
+    <section className="bignews">
+      <h2>News</h2>
+      <form action="">
+        <label htmlFor=""></label>
+        <input type="text" name="" id=""/>
+      </form>
+      <ul>
+      {
+        news?.map((article) => (
+          <li key={article.publishedAt}>
+            <article>
+              <h3>{article.title}</h3>
+              <a href={article.url}><img src={article.urlToImage} alt={article.description}/></a>
+              <p>{article.content}</p>
             </article>
-          ))
-        }
-      </section>
+          </li>
+        ))
+      }
+      </ul>
+    </section>
   );
 }
