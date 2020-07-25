@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/true-portfolio/static/css/main.69f5edb8.chunk.css",
+    "main.js": "/true-portfolio/static/js/main.23ff2e2d.chunk.js",
+    "main.js.map": "/true-portfolio/static/js/main.23ff2e2d.chunk.js.map",
+    "runtime-main.js": "/true-portfolio/static/js/runtime-main.4e173fbb.js",
+    "runtime-main.js.map": "/true-portfolio/static/js/runtime-main.4e173fbb.js.map",
+    "static/js/2.a9c7c381.chunk.js": "/true-portfolio/static/js/2.a9c7c381.chunk.js",
+    "static/js/2.a9c7c381.chunk.js.map": "/true-portfolio/static/js/2.a9c7c381.chunk.js.map",
+    "index.html": "/true-portfolio/index.html",
+    "precache-manifest.2e305c2110b5ea4ab838366c341bec2d.js": "/true-portfolio/precache-manifest.2e305c2110b5ea4ab838366c341bec2d.js",
+    "service-worker.js": "/true-portfolio/service-worker.js",
+    "static/css/main.69f5edb8.chunk.css.map": "/true-portfolio/static/css/main.69f5edb8.chunk.css.map",
+    "static/js/2.a9c7c381.chunk.js.LICENSE.txt": "/true-portfolio/static/js/2.a9c7c381.chunk.js.LICENSE.txt",
+    "static/media/00091A Floral.png": "/true-portfolio/static/media/00091A Floral.e7eed119.png",
+    "static/media/00091B Floral.png": "/true-portfolio/static/media/00091B Floral.de4fa060.png",
+    "static/media/01376 Sunflower Mandala.png": "/true-portfolio/static/media/01376 Sunflower Mandala.f112751c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4e173fbb.js",
+    "static/js/2.a9c7c381.chunk.js",
+    "static/css/main.69f5edb8.chunk.css",
+    "static/js/main.23ff2e2d.chunk.js"
+  ]
+}
