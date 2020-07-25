@@ -1,5 +1,5 @@
 import React from 'react';
-import { NEWSAPIKEY } from './storages/Main';
+import { NEWSAPI } from './storages/Main';
 import { MiscMaster } from './misc/_MiscMaster';
 
 import "./Main.scss";
@@ -15,120 +15,71 @@ export function Main() {
 }
 
 function RedditFeed() {
+  const [inputValue, setValue] = React.useState("reactjs");
+  const [subreddit, setSubreddit] = React.useState(inputValue);
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubreddit(() => inputValue);
+  }
 
   return (
-    <section className="redditfetch">
+    <section className="redditfeed">
       <h2>Reddit threads</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="subredditsearch">Search subreddit:</label>
+        <input 
+          type="search"
+          id="subredditsearch"
+          value={inputValue}
+          onChange={e => setValue(e.target.value)}
+          name="subredditsearch"
+        />
+      </form>
+      <RedditFetcher subreddit={subreddit}/>
     </section>
   );
 }
 
+function RedditFetcher({ subreddit }: RedditFetcherArg) {
+  const [posts, setPosts] = React.useState<RedditAPIThreadData[]>([]);
+
+  React.useEffect(() => {
+    fetchData();
+
+    async function fetchData() {
+      const response = await fetch(
+        `https://www.reddit.com/r/${subreddit}.json`
+      );
+      const json: RedditAPIResponseJSON = await response.json();
+      console.log(json);
+      setPosts(json.data.children.map(thread => thread.data));
+    }
+  }, [subreddit, setPosts]);
+
+  return (
+    <ul className="rdthreads">
+      {
+        posts?.map(post => (
+          <li key={post.id} className="rdthread">
+            <a href={post.url}>{post.title}</a> by <b>{post.author}</b>
+          </li>
+        ))
+      }
+    </ul>
+  );
+}
+
 function News() {
-  const [news, setNews] = React.useState<NewsAPIResponseJSON["articles"] | null>(null);
-
-  /** News API has 2 main endpoints and a minor one. */
-  const endpoint = {
-    /** 
-     * This endpoint provides live top and breaking headlines for a country, specific category in a country, single source, or multiple sources. You can also search with keywords. Articles are sorted by the earliest date published first. 
-     * 
-     * This endpoint is great for retrieving headlines for display on news tickers or similar.
-      */
-    topHeadlines: "/v2/top-headlines",
-    /**
-     *  Search through millions of articles from over 50,000 large and small news sources and blogs. This includes breaking news as well as lesser articles.
-     * 
-     * This endpoint suits article discovery and analysis, but can be used to retrieve articles for display, too.
-     */
-    everything: "/v2/everything",
-    /**
-     *  Returns the subset of news publishers that top headlines (/v2/top-headlines) are available from. It's mainly a convenience endpoint that you can use to keep track of the publishers available on the API, and you can pipe it straight through to your users.
-      */
-    sources: "/v2/sources",
-  };
-
-  /** 
-   * The 2-letter ISO 3166-1 code of the country you want to get headlines for.
-   * 
-   * Note: can't mix this param with the "source" param.
-   */
-  const country = {
-    ae: "country=ae", 
-    ar: "country=ar", 
-    at: "country=at", 
-    au: "country=au", 
-    be: "country=be", 
-    bg: "country=bg", 
-    br: "country=br", 
-    ca: "country=ca", 
-    ch: "country=ch", 
-    cn: "country=cn", 
-    co: "country=co", 
-    cu: "country=cu", 
-    cz: "country=cz", 
-    de: "country=de", 
-    eg: "country=eg", 
-    fr: "country=fr", 
-    gb: "country=gb", 
-    gr: "country=gr", 
-    hk: "country=hk", 
-    hu: "country=hu", 
-    id: "country=id", 
-    ie: "country=ie", 
-    il: "country=il", 
-    in: "country=in", 
-    it: "country=it", 
-    jp: "country=jp", 
-    kr: "country=kr", 
-    lt: "country=lt", 
-    lv: "country=lv", 
-    ma: "country=ma", 
-    mx: "country=mx", 
-    my: "country=my", 
-    ng: "country=ng", 
-    nl: "country=nl", 
-    no: "country=no", 
-    nz: "country=nz", 
-    ph: "country=ph", 
-    pl: "country=pl", 
-    pt: "country=pt", 
-    ro: "country=ro", 
-    rs: "country=rs", 
-    ru: "country=ru", 
-    sa: "country=sa", 
-    se: "country=se", 
-    sg: "country=sg", 
-    si: "country=si", 
-    sk: "country=sk", 
-    th: "country=th", 
-    tr: "country=tr", 
-    tw: "country=tw", 
-    ua: "country=ua", 
-    us: "country=us", 
-    ve: "country=ve", 
-    za: "country=za",
-  }
-
-  /**
-   * The category you want to get headlines for.
-   * 
-   * Note: you can't mix this param with the "source" param. 
-   */
-  const category = {
-   business: "business", 
-   entertainment: "entertainment", 
-   general: "general", 
-   health: "health", 
-   science: "science", 
-   sports: "sports", 
-   technology: "technology",
-  }
+  const [news, setNews] = React.useState<NewsAPIResponseJSON["articles"]>([]);
+  const {endpoint, country, apiKey} = NEWSAPI;
 
   React.useEffect(() => {
     fetchNews();
   }, [setNews]);
 
   async function fetchNews() {
-    const response = await fetch(`http://newsapi.org${endpoint.topHeadlines}?${country.us}&pageSize=5&apiKey=${NEWSAPIKEY}`);
+    const response = await fetch(`http://newsapi.org${endpoint.topHeadlines}?${country.us}&pageSize=5&apiKey=${apiKey}`);
     const json: NewsAPIResponseJSON = await response.json();
     console.log(json);
     

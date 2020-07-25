@@ -11,14 +11,46 @@
 
   section {
     flex: 0 1 auto;
-    border: 1px solid black;
   }
+
+  /* RedditFeed component */
+  .redditfeed {
+    padding-left: 1.5rem;
+
+    form {
+      display: flex;
+      flex-flow: column nowrap;
+      margin-bottom: 1rem;
+      text-align: start;
+      input {
+        padding: 0.5rem 1rem;
+        background-color: lightgray;
+        border: 1px solid darkgray;
+
+        &:focus{
+          background-color: white;
+        }
+      }
+    }
+
+    /* RedditFetcher component */
+    .rdthreads {
+      list-style: none;
+      text-align: left;
+
+      .rdthread {
+        margin-bottom: 0.5rem;
+      }
+    }
+    /* END RedditFetcher component */
+  }
+  /* END RedditFeed component */
 
   /* News component */
   .bignews {
     height: 100vh;
     overflow-y: auto;
-    flex: 0 1 25%;
+    flex: 0 0 20%;
     justify-self: flex-end;
     margin-left: auto;
 

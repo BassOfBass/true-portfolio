@@ -205,11 +205,6 @@ function RedditFeeder() {
   const [inputValue, setValue] = React.useState("reactjs");
   const [subreddit, setSubreddit] = React.useState(inputValue);
 
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   setSubreddit(inputValue);
-  // }
-
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSubreddit(() => inputValue);
