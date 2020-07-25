@@ -1,0 +1,121 @@
+/* Header component */
+header {
+  background-color: blanchedalmond;
+  border-bottom: 1px solid black;
+
+  h1 {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0.2rem;
+
+    img {
+      width: 3rem;
+      height: auto;
+      margin-left: 2rem;
+    }
+  }
+  
+  nav {
+    background: black;
+    color: white;
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+
+      li {
+        transition: 0.3s;
+
+        a {
+          display: inline-block;
+          text-decoration: none;
+          color: white;
+          text-align: center; 
+          padding: 14px 25px;
+          border-top: 1px solid black;
+            border-bottom: 1px solid black;
+          
+          // &:link {}
+          // &:visited {}
+          &:hover {
+            text-decoration: underline;
+            background: white;
+            color: black;
+          }
+
+          &:active {
+            text-decoration: underline;
+          }
+        }
+
+      }
+    }
+  }
+
+  form {
+    height: 0;
+
+    &.formopen {
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    fieldset {
+      section {
+        margin: 1rem;
+        max-width: 25%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-content: flex-end;
+        transition: 0.5s;
+
+        input {
+          border: 1px solid black;
+          padding: 10px; // 15px for mobile
+          
+          // &[type=email]:invalid {
+          //   color: red;
+          // }
+
+          // &[type=email]:not(:placeholder-shown):invalid {
+          //   color: red;
+          // }
+        }
+
+        &#toggle-password {
+          background: none;
+          border: none;
+          cursor: pointer;
+          /* Media query isn't shown here. */
+          font-size: var(--mobile-font-size); 
+          font-weight: 300;
+          padding: 0;
+          /* Display at the top right of the container */
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      }
+      
+      a {
+        margin-right: 3rem;
+      }
+
+      > button {
+        border-radius: 1rem;
+        border: 1px solid darkgreen;
+        padding: 1rem;
+
+        &:disabled {
+          border: 1px solid red;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
+/* END Header component */
