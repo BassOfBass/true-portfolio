@@ -6,7 +6,7 @@ export function MiscMaster() {
   return (
     <section className="miscellaneous">
       <h2>Misc components demo</h2>
-      {/* <SuperForm /> */}
+      <SuperForm />
       <DaveTutorials />
     </section>
   );

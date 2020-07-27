@@ -11,6 +11,7 @@
 
   section {
     flex: 0 1 auto;
+    margin-right: 0.5rem;
   }
 
   /* RedditFeed component */
@@ -45,6 +46,54 @@
     /* END RedditFetcher component */
   }
   /* END RedditFeed component */
+
+  /* BunchOfBoxes component */
+  .bunchboxes {
+    .boxcontainer {
+      list-style: none;
+      display: flex;
+      flex-flow: row wrap;
+      .box {
+        flex: 0 0 auto;
+        width: 200px;
+        height: 200px;
+        background: lightskyblue;
+        border: 2px solid purple;
+        margin: 0.25rem;
+
+        &.metal {
+          background: silver;
+          border-color: black;
+        }
+
+        &.crude {
+          background: burlywood;
+          border-color: green;
+        }
+
+        &.golden {
+          background: goldenrod;
+          border-color: red;
+        }
+
+        &.glitter {
+          background: lightsteelblue;
+          border-color: lightseagreen;
+        }
+
+        &.normal {
+          transition: none;
+        }
+
+        &.abnormal {
+          background: purple;
+          border-color: lightskyblue;
+        }
+      }
+    }
+    
+  }
+  /* END BunchOfBoxes component*/
 
   /* News component */
   .bignews {

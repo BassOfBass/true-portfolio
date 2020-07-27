@@ -1,6 +1,6 @@
 import React from 'react';
 import { NEWSAPI } from './storages/Main';
-import { MiscMaster } from './misc/_MiscMaster';
+// import { MiscMaster } from './misc/_MiscMaster';
 
 import "./Main.scss";
 
@@ -8,7 +8,8 @@ export function Main() {
   return (
     <main>
       <RedditFeed />
-      {process.env.NODE_ENV === "development" && <MiscMaster />}
+      <BunchOfBoxes />
+      {/* {process.env.NODE_ENV !== "production" && <MiscMaster />} */}
       <News />
     </main>
   );
@@ -49,7 +50,10 @@ function RedditFetcher({ subreddit }: RedditFetcherArg) {
 
     async function fetchData() {
       const response = await fetch(
-        `https://www.reddit.com/r/${subreddit}.json`
+        `https://www.reddit.com/r/${subreddit}.json`, {
+          method: "GET",
+          mode: "cors",
+        }
       );
       const json: RedditAPIResponseJSON = await response.json();
       console.log(json);
@@ -70,6 +74,24 @@ function RedditFetcher({ subreddit }: RedditFetcherArg) {
   );
 }
 
+function BunchOfBoxes() {
+  const boxes = [{},{},{},{},{},{},];
+
+  return (
+    <section className="bunchboxes">
+      <h2>Bunch of Boxes</h2>
+      <ul className="boxcontainer">
+        <li className="box metal"><span>METAL BAWKS</span></li>
+        <li className="box crude"><span>CRUDE BOX</span></li>
+        <li className="box golden"><span>GOLDEN-PLATED BOX</span></li>
+        <li className="box glitter"><span>GLITTERING BOX</span></li>
+        <li className="box normal"><span>NORMAL BAWKS</span></li>
+        <li className="box abnormal"><span>ABNORMAL BAWKS</span></li>
+      </ul>
+    </section>
+  );
+}
+
 function News() {
   const [news, setNews] = React.useState<NewsAPIResponseJSON["articles"]>([]);
   const {endpoint, country, apiKey} = NEWSAPI;
@@ -79,7 +101,7 @@ function News() {
   }, [setNews]);
 
   async function fetchNews() {
-    const response = await fetch(`http://newsapi.org${endpoint.topHeadlines}?${country.us}&pageSize=5&apiKey=${apiKey}`);
+    const response = await fetch(`https://newsapi.org${endpoint.topHeadlines}?${country.us}&pageSize=5&apiKey=${apiKey}`);
     const json: NewsAPIResponseJSON = await response.json();
     console.log(json);
     
